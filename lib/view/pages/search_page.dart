@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram/view/style/style.dart';
 
+import '../domen/components/timer_search.dart';
 import '../domen/model/search_model.dart';
 import '../domen/repository/repo.dart';
 
@@ -13,19 +14,12 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late TextEditingController searchController;
+  TextEditingController searchController = TextEditingController();
   Search? search;
-  @override
-  void initState() {
-    getInfo();
-    searchController =TextEditingController();
-    super.initState();
-  }
+  String change = '';
+  final _delayed = Delayed(milliseconds: 700);
 
-  getInfo() async {
-    search = await GetInfo.search(searchController.text);
-    print('User: $search');
-  }
+  
 
   @override
   void dispose() {
@@ -42,8 +36,23 @@ class _SearchPageState extends State<SearchPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: TextFormField(
+                onChanged: (value) async {
+                  _delayed.run(() async {
+                    change = value;
+                    search = await GetInfo.search(searchController.text);
+                    setState(() {});
+                  });
+                },
                 controller: searchController,
                 decoration: InputDecoration(
+                    suffixIcon: change.isNotEmpty
+                        ? IconButton(
+                            onPressed: () {
+                              change = searchController.text = "";
+                              setState(() {});
+                            },
+                            icon: Icon(Icons.close))
+                        : SizedBox.shrink(),
                     prefixIcon: Icon(Icons.search),
                     fillColor: Color.fromARGB(255, 200, 197, 197),
                     filled: true,
@@ -59,10 +68,61 @@ class _SearchPageState extends State<SearchPage> {
                         borderRadius: BorderRadius.circular(20))),
               ),
             ),
-            ListView.builder(itemBuilder: (context,index)=>Container(
-                height: 52.h,
-                width: 374.w,
-            ))
+            25.verticalSpace,
+            FutureBuilder(
+              future: GetInfo.search(change),
+              builder: (BuildContext context, AsyncSnapshot<Search> snapshot) {
+                if (snapshot.hasData) {
+                  return Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: snapshot.data?.body.hashtags.length,
+                        itemBuilder: (context, index) => Padding(
+                              padding: const EdgeInsets.only(left: 14),
+                              child: Container(
+                                margin: EdgeInsets.only(bottom: 14),
+                                height: 52.h,
+                                width: 374.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 60,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.purple),
+                                    ),
+                                    10.horizontalSpace,
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '${search?.body.hashtags[index].hashtag.name}',
+                                          style: Style.textStyleRegular2(),
+                                        ),
+                                        2.verticalSpace,
+                                        Text(
+                                          'Title',
+                                          style:
+                                              Style.textStyleRegular2(size: 14),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )),
+                  );
+                }else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          '${snapshot.error} occurred',
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      );
+                    }
+                    return const SizedBox();
+              },
+            ),
           ],
         ),
       ),
