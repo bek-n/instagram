@@ -6,6 +6,8 @@ import 'package:instagram/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../domen/components/histories.dart';
 import '../domen/components/my_history.dart';
+import '../domen/model/singleUser_model.dart';
+import '../domen/repository/repo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +18,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool like = false;
+  Singleuser? user;
+
+  @override
+  void initState() {
+    getInfo();
+    super.initState();
+  }
+
+  getInfo() async {
+    user = await GetInfo.getSingleUserHome();
+    print('User: $user');
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               8.horizontalSpace,
                               Text(
-                                'Name',
+                                '${user?.body.edges[index].node.owner.username}',
                                 style: Style.textStyleRegular2(size: 12),
                               ),
                               Spacer(),
@@ -103,9 +120,30 @@ class _HomePageState extends State<HomePage> {
                                         )),
                               SvgPicture.asset('assets/svg/comment.svg'),
                               12.horizontalSpace,
-                              Icon(Icons.send)
+                              Icon(Icons.send),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 13),
+                                child: Icon(
+                                  Icons.bookmark_border,
+                                  size: 30,
+                                ),
+                              )
                             ],
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: RichText(
+                                text: TextSpan(
+                                    text: 'Username  ',
+                                    style: Style.textStyleRegular(size: 14),
+                                    children: [
+                                  TextSpan(
+                                      text:
+                                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                                      style: Style.textStyleRegular2(size: 11))
+                                ])),
+                          )
                         ],
                       )),
             )
