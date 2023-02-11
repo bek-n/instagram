@@ -16,13 +16,14 @@ class Style {
   static const navBgcolorOfApp = Color(0xff121421);
   // ---------- Gradient   ---------- //
 
-  // static const linearGradient = LinearGradient(
-  //     begin: Alignment.bottomRight,
-  //     end: Alignment.topLeft,
-  //     colors: [
-  //       Color(0xffFF1843),
-  //       Color(0xffFF7E95),
-  //     ]);
+  static const linearGradient = LinearGradient(
+      begin: Alignment.bottomRight,
+      end: Alignment.topLeft,
+      colors: [
+        Color(0xffC913B9),
+        Color(0xffF9373F),
+        Color(0xffFECD00),
+      ]);
 
   static const primaryDisabledColor = Color.fromARGB(255, 132, 250, 193);
 

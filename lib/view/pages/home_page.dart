@@ -4,6 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/view/pages/story_page.dart';
 import 'package:instagram/view/style/style.dart';
 
+import '../domen/components/histories.dart';
+import '../domen/components/my_history.dart';
+import '../domen/model/user_model.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -29,28 +33,19 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(right: 14),
             child: SvgPicture.asset('assets/svg/Direct.svg'),
           ),
-          
         ],
       ),
-      body:  Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              child: const Text('show stories'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const StroyPage();
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const MyHistory(),
+              18.horizontalSpace,
+              const Histories()
+            ],
+          )
+        ],
       ),
     );
   }
