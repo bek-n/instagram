@@ -35,17 +35,58 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const MyHistory(),
-              18.horizontalSpace,
-              const Histories()
-            ],
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                const MyHistory(),
+                18.horizontalSpace,
+                const Histories()
+              ],
+            ),
+            25.verticalSpace,
+            SizedBox(
+              height: 700,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: 1,
+                  itemBuilder: (context, index) => Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: 31.h,
+                                width: 31.w,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Style.blackColor),
+                              ),
+                              8.horizontalSpace,
+                              Text(
+                                'Name',
+                                style: Style.textStyleRegular2(size: 12),
+                              ),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 12),
+                                child: Icon(Icons.more_horiz),
+                              )
+                            ],
+                          ),
+                          7.verticalSpace,
+                          Container(
+                            height: 390.h,
+                            width: MediaQuery.of(context).size.width,
+                            color: Style.greyColor90,
+                          ),
+                        ],
+                      )),
+            )
+          ],
+        ),
       ),
     );
   }
