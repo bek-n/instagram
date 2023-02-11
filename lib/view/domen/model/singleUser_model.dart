@@ -409,9 +409,9 @@ class TentacledNode {
     });
 
     bool didReportAsSpam;
-    String id;
+    num id;
     bool viewerHasLiked;
-    int createdAt;
+    num createdAt;
     UserClass owner;
     String text;
 
@@ -446,7 +446,7 @@ class UserClass {
     bool isVerified;
     String username;
     String profilePicUrl;
-    String id;
+    num id;
     String? fullName;
 
     factory UserClass.fromJson(Map json) => UserClass(
@@ -541,7 +541,7 @@ class SponsorClass {
     });
 
     String username;
-    String id;
+    num id;
 
     factory SponsorClass.fromJson(Map  json) => SponsorClass(
         username: json["username"],
@@ -662,7 +662,7 @@ class IndecentNode {
     List<Resource> displayResources;
     bool shouldLogClientEvent;
     EdgeMediaToTaggedUser edgeMediaToTaggedUser;
-    String id;
+    num id;
     bool isVideo;
     String typename;
     String trackingToken;

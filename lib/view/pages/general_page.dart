@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/view/pages/home_page.dart';
+import 'package:instagram/view/pages/search_page.dart';
 import 'package:instagram/view/style/style.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,7 @@ class GeneralPage extends StatefulWidget {
 class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
     const HomePage(),
-    const Placeholder(),
+    const SearchPage(),
     const Placeholder(),
     const Placeholder(),
     const Placeholder(),
@@ -32,10 +33,10 @@ class _GeneralPageState extends State<GeneralPage> {
       ),
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: context.watch<HomeController>().currentIndex,
-        onTap: (value) {
-           context.read<HomeController>().setIndex(value);
-        },
+          currentIndex: context.watch<HomeController>().currentIndex,
+          onTap: (value) {
+            context.read<HomeController>().setIndex(value);
+          },
           selectedIconTheme: IconThemeData(color: Style.blackColor),
           type: BottomNavigationBarType.fixed,
           items: [
@@ -60,7 +61,6 @@ class _GeneralPageState extends State<GeneralPage> {
                           image: AssetImage('assets/images/me.jpeg'),
                           fit: BoxFit.cover)),
                 )),
-                
           ]),
     );
   }
