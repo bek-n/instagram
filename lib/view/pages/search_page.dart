@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:instagram/view/domen/components/cached_network_image.dart';
 import 'package:instagram/view/style/style.dart';
 
 import '../domen/components/timer_search.dart';
@@ -84,44 +85,57 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             25.verticalSpace,
-            Expanded(
-              child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: search?.body.hashtags.length ?? 1,
-                  itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.only(left: 14),
-                        child: Container(
-                          margin: EdgeInsets.only(bottom: 14),
-                          height: 52.h,
-                          width: 374.w,
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.purple),
+            change.isNotEmpty
+                ? Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: search?.body.hashtags.length ?? 1,
+                        itemBuilder: (context, index) => Padding(
+                              padding: const EdgeInsets.only(left: 14),
+                              child: Container(
+                                margin: EdgeInsets.only(bottom: 14),
+                                height: 52.h,
+                                width: 374.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 60,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.purple),
+                                    ),
+                                    10.horizontalSpace,
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '${search?.body.hashtags[index].hashtag.name}',
+                                          style: Style.textStyleRegular2(),
+                                        ),
+                                        2.verticalSpace,
+                                        Text(
+                                          'Title',
+                                          style:
+                                              Style.textStyleRegular2(size: 14),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
-                              10.horizontalSpace,
-                              Column(
-                                children: [
-                                  Text(
-                                    '${search?.body.hashtags[index].hashtag.name}',
-                                    style: Style.textStyleRegular2(),
-                                  ),
-                                  2.verticalSpace,
-                                  Text(
-                                    'Title',
-                                    style: Style.textStyleRegular2(size: 14),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      )),
-            )
+                            )),
+                  )
+                : Expanded(
+                    child: GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisSpacing: 3,
+                            crossAxisSpacing: 3,
+                            crossAxisCount: 3),
+                        itemBuilder: (context, index) => CustomImageNetwork(
+                            radius: 0,
+                            image:
+                                'https://source.unsplash.com/random/$index')),
+                  )
           ],
         ),
       ),
