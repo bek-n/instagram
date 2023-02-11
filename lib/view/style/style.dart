@@ -6,7 +6,7 @@ class Style {
 
   // ---------- Color   ---------- //
 
-  static const primaryColor = Color(0xff0E9D57);
+  static const primaryColor = Color(0xff1FA1FF);
   static const whiteColor = Colors.white;
   static const blackColor = Colors.black;
   static const darkBgcolorOfApp = Color(0xff090A11);
