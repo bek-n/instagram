@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram/controller/home_controller.dart';
+import 'package:instagram/view/domen/model/Single_User_model.dart';
 import 'package:instagram/view/style/style.dart';
-import 'package:provider/provider.dart';
 import '../domen/components/histories.dart';
 import '../domen/components/home_posts.dart';
 import '../domen/components/my_history.dart';
-import '../domen/model/singleUser_model.dart';
 import '../domen/repository/repo.dart';
 
 class HomePage extends StatefulWidget {
@@ -71,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                     itemCount: 10,
                     itemBuilder: (context, index) => HomePosts(
                           text:
-                              '${user?.body.edges[index].node.owner.username}',
+                              '${user?.body?.edges[index].node?.owner?.username}',
                         )))
           ],
         ),
