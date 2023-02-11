@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram/view/pages/story_page.dart';
+import 'package:instagram/controller/home_controller.dart';
 import 'package:instagram/view/style/style.dart';
-
+import 'package:provider/provider.dart';
 import '../domen/components/histories.dart';
 import '../domen/components/my_history.dart';
-import '../domen/model/user_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool like = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,12 +57,15 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                height: 31.h,
-                                width: 31.w,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Style.blackColor),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 13),
+                                child: Container(
+                                  height: 31.h,
+                                  width: 31.w,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Style.blackColor),
+                                ),
                               ),
                               8.horizontalSpace,
                               Text(
@@ -81,6 +84,27 @@ class _HomePageState extends State<HomePage> {
                             height: 390.h,
                             width: MediaQuery.of(context).size.width,
                             color: Style.greyColor90,
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    context.read<HomeController>().onChange();
+                                  },
+                                  icon: context.watch<HomeController>().isLiked
+                                      ? Icon(
+                                          Icons.favorite_outline,
+                                          size: 30,
+                                        )
+                                      : Icon(
+                                          Icons.favorite,
+                                          color: Colors.red,
+                                          size: 30,
+                                        )),
+                              SvgPicture.asset('assets/svg/comment.svg'),
+                              12.horizontalSpace,
+                              Icon(Icons.send)
+                            ],
                           ),
                         ],
                       )),
