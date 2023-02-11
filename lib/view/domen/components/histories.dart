@@ -13,7 +13,7 @@ class Histories extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 63,
-      width: 330,
+      width: 300,
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
