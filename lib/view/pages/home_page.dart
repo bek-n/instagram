@@ -31,8 +31,6 @@ class _HomePageState extends State<HomePage> {
     print('User: $user');
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,18 +62,19 @@ class _HomePageState extends State<HomePage> {
             ),
             25.verticalSpace,
             SizedBox(
-              height: 700,
+              height: double.maxFinite,
               child: ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
-                  itemCount: 1,
+                  itemCount: 10,
                   itemBuilder: (context, index) => Column(
                         children: [
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 13),
+                                padding:
+                                    const EdgeInsets.only(left: 13, top: 13),
                                 child: Container(
                                   height: 31.h,
                                   width: 31.w,

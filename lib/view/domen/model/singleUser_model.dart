@@ -49,7 +49,7 @@ class Body {
         pageInfo: PageInfo.fromJson(json["page_info"]),
     );
 
-    Map toJson() => {
+    Map<String, dynamic> toJson() => {
         "edges": List<dynamic>.from(edges.map((x) => x.toJson())),
         "count": count,
         "page_info": pageInfo.toJson(),
@@ -480,7 +480,7 @@ class PageInfo {
         endCursor: json["end_cursor"],
     );
 
-    Map toJson() => {
+    Map<String, dynamic> toJson() => {
         "has_next_page": hasNextPage,
         "end_cursor": endCursor,
     };
@@ -513,7 +513,7 @@ class FluffyEdge {
         node: StickyNode.fromJson(json["node"]),
     );
 
-    Map toJson() => {
+    Map<String, dynamic> toJson() => {
         "node": node.toJson(),
     };
 }
