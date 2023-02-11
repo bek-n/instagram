@@ -19,7 +19,22 @@ class _SearchPageState extends State<SearchPage> {
   String change = '';
   final _delayed = Delayed(milliseconds: 700);
 
-  
+  @override
+  void initState() {
+    getInfo();
+
+    super.initState();
+  }
+
+  getInfo() async {
+    await getSearch();
+  }
+
+  getSearch() async {
+    search = await GetInfo.search(change);
+    setState(() {});
+    print(search);
+  }
 
   @override
   void dispose() {
@@ -69,60 +84,44 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             25.verticalSpace,
-            FutureBuilder(
-              future: GetInfo.search(change),
-              builder: (BuildContext context, AsyncSnapshot<Search> snapshot) {
-                if (snapshot.hasData) {
-                  return Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: snapshot.data?.body.hashtags.length,
-                        itemBuilder: (context, index) => Padding(
-                              padding: const EdgeInsets.only(left: 14),
-                              child: Container(
-                                margin: EdgeInsets.only(bottom: 14),
-                                height: 52.h,
-                                width: 374.w,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 60,
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.purple),
-                                    ),
-                                    10.horizontalSpace,
-                                    Column(
-                                      children: [
-                                        Text(
-                                          '${search?.body.hashtags[index].hashtag.name}',
-                                          style: Style.textStyleRegular2(),
-                                        ),
-                                        2.verticalSpace,
-                                        Text(
-                                          'Title',
-                                          style:
-                                              Style.textStyleRegular2(size: 14),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
+            Expanded(
+              child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: search?.body.hashtags.length ?? 1,
+                  itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.only(left: 14),
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 14),
+                          height: 52.h,
+                          width: 374.w,
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.purple),
                               ),
-                            )),
-                  );
-                }else if (snapshot.hasError) {
-                      return Center(
-                        child: Text(
-                          '${snapshot.error} occurred',
-                          style: const TextStyle(fontSize: 18),
+                              10.horizontalSpace,
+                              Column(
+                                children: [
+                                  Text(
+                                    '${search?.body.hashtags[index].hashtag.name}',
+                                    style: Style.textStyleRegular2(),
+                                  ),
+                                  2.verticalSpace,
+                                  Text(
+                                    'Title',
+                                    style: Style.textStyleRegular2(size: 14),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
-                      );
-                    }
-                    return const SizedBox();
-              },
-            ),
+                      )),
+            )
           ],
         ),
       ),

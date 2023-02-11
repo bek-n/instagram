@@ -5,6 +5,7 @@ import 'package:instagram/controller/home_controller.dart';
 import 'package:instagram/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../domen/components/histories.dart';
+import '../domen/components/home_posts.dart';
 import '../domen/components/my_history.dart';
 import '../domen/model/singleUser_model.dart';
 import '../domen/repository/repo.dart';
@@ -62,90 +63,16 @@ class _HomePageState extends State<HomePage> {
             ),
             25.verticalSpace,
             SizedBox(
-              height: double.maxFinite,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: 10,
-                  itemBuilder: (context, index) => Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 13, top: 13),
-                                child: Container(
-                                  height: 31.h,
-                                  width: 31.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Style.blackColor),
-                                ),
-                              ),
-                              8.horizontalSpace,
-                              Text(
-                                '${user?.body.edges[index].node.owner.username}',
-                                style: Style.textStyleRegular2(size: 12),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 12),
-                                child: Icon(Icons.more_horiz),
-                              )
-                            ],
-                          ),
-                          7.verticalSpace,
-                          Container(
-                            height: 390.h,
-                            width: MediaQuery.of(context).size.width,
-                            color: Style.greyColor90,
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                  onPressed: () {
-                                    context.read<HomeController>().onChange();
-                                  },
-                                  icon: context.watch<HomeController>().isLiked
-                                      ? Icon(
-                                          Icons.favorite_outline,
-                                          size: 30,
-                                        )
-                                      : Icon(
-                                          Icons.favorite,
-                                          color: Colors.red,
-                                          size: 30,
-                                        )),
-                              SvgPicture.asset('assets/svg/comment.svg'),
-                              12.horizontalSpace,
-                              Icon(Icons.send),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 13),
-                                child: Icon(
-                                  Icons.bookmark_border,
-                                  size: 30,
-                                ),
-                              )
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: RichText(
-                                text: TextSpan(
-                                    text: 'Username  ',
-                                    style: Style.textStyleRegular(size: 14),
-                                    children: [
-                                  TextSpan(
-                                      text:
-                                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-                                      style: Style.textStyleRegular2(size: 11))
-                                ])),
-                          )
-                        ],
-                      )),
-            )
+                height: double.maxFinite,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: 10,
+                    itemBuilder: (context, index) => HomePosts(
+                          text:
+                              '${user?.body.edges[index].node.owner.username}',
+                        )))
           ],
         ),
       ),
