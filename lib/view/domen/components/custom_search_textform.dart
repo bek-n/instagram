@@ -4,18 +4,22 @@ class CustomSearchTextForm extends StatelessWidget {
   final ValueChanged<String>? onChange;
   final TextEditingController? controller;
    final Widget? suffixicon;
-  const CustomSearchTextForm({super.key, this.onChange, this.controller, this.suffixicon});
+   final Widget? prefixIcon;
+
+  const CustomSearchTextForm({super.key, this.onChange, this.controller, this.suffixicon, this.prefixIcon});
 
   @override
   Widget build(BuildContext context) {
     return  Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: TextFormField(
+                
                 onChanged: onChange,
                 controller: controller,
                 decoration: InputDecoration(
+                  
                     suffixIcon: suffixicon,
-                    prefixIcon: const Icon(Icons.search),
+                    prefixIcon: prefixIcon,
                     fillColor: const Color.fromARGB(255, 200, 197, 197),
                     filled: true,
                     focusedBorder: OutlineInputBorder(

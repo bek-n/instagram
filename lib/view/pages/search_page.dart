@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram/view/domen/components/cached_network_image.dart';
 import 'package:instagram/view/style/style.dart';
 
+import '../domen/components/custom_search_textform.dart';
 import '../domen/components/timer_search.dart';
 import '../domen/model/search_model.dart';
 import '../domen/repository/repo.dart';
@@ -49,40 +50,24 @@ class _SearchPageState extends State<SearchPage> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: TextFormField(
-                onChanged: (value) async {
-                  _delayed.run(() async {
-                    change = value;
-                    search = await GetInfo.search(searchController.text);
-                    setState(() {});
-                  });
-                },
-                controller: searchController,
-                decoration: InputDecoration(
-                    suffixIcon: change.isNotEmpty
-                        ? IconButton(
-                            onPressed: () {
-                              change = searchController.text = "";
-                              setState(() {});
-                            },
-                            icon: Icon(Icons.close))
-                        : SizedBox.shrink(),
-                    prefixIcon: Icon(Icons.search),
-                    fillColor: Color.fromARGB(255, 200, 197, 197),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 200, 197, 197),
-                        ),
-                        borderRadius: BorderRadius.circular(20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 200, 197, 197),
-                        ),
-                        borderRadius: BorderRadius.circular(20))),
-              ),
+            CustomSearchTextForm(
+              onChange: (value) async {
+                _delayed.run(() async {
+                  change = value;
+                  search = await GetInfo.search(searchController.text);
+                  setState(() {});
+                });
+              },
+              controller: searchController,
+              prefixIcon: Icon(Icons.search),
+              suffixicon: change.isNotEmpty
+                  ? IconButton(
+                      onPressed: () {
+                        change = searchController.text = "";
+                        setState(() {});
+                      },
+                      icon: Icon(Icons.close))
+                  : SizedBox.shrink(),
             ),
             25.verticalSpace,
             change.isNotEmpty
@@ -127,10 +112,11 @@ class _SearchPageState extends State<SearchPage> {
                   )
                 : Expanded(
                     child: GridView.builder(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisSpacing: 3,
-                            crossAxisSpacing: 3,
-                            crossAxisCount: 3),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                mainAxisSpacing: 3,
+                                crossAxisSpacing: 3,
+                                crossAxisCount: 3),
                         itemBuilder: (context, index) => CustomImageNetwork(
                             radius: 0,
                             image:
