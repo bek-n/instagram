@@ -25,6 +25,7 @@ class _HomePostsState extends State<HomePosts> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
