@@ -67,16 +67,19 @@ class _HomePageState extends State<HomePage> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
-                    itemCount: 10,
+                    itemCount: user
+                        ?.body?.edges[0].node?.displayResources[2].src.length,
                     itemBuilder: (context, index) => HomePosts(
                           text:
                               '${user?.body?.edges[index].node?.owner?.username}',
-                          comment: '',
+                          comment:
+                              '${user?.body?.edges[index].node?.edgeMediaToCaption?.edges[0].node?.text}',
                           image:
-                              ' ${user?.body?.edges[index].node?.displayResources[2].src}',
+                              '${user?.body?.edges[index].node?.displayResources[2].src}',
                           username:
                               '${user?.body?.edges[index].node?.owner?.username}',
-                          avatar: '',
+                          avatar:
+                              'https://fotografias.antena3.com/clipping/cmsimages01/2022/05/07/FB652FAE-E68A-4773-B4E8-662369DC3698/curioso-nombre-que-cristiano-ronaldo-georgina-rodriguez-han-puesto-hija-recien-nacida_104.jpg?crop=482,482,x154,y0&width=1200&height=1200&optimize=low&format=webply',
                         )))
           ],
         ),
