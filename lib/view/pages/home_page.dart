@@ -6,6 +6,7 @@ import 'package:instagram/view/style/style.dart';
 import '../domen/components/histories.dart';
 import '../domen/components/home_posts.dart';
 import '../domen/components/my_history.dart';
+import '../domen/model/search_model.dart';
 import '../domen/repository/repo.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,16 +20,16 @@ class _HomePageState extends State<HomePage> {
   bool like = false;
   Singleuser? user;
 
-  @override
-  void initState() {
-    getInfo();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   getInfo();
+  //   super.initState();
+  // }
 
-  getInfo() async {
-    user = await GetInfo.getSingleUserHome();
-    print('User: $user');
-  }
+  // getInfo() async {
+  //   user = await GetInfo.getSingleUserHome();
+  //   print('User: $user');
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +63,29 @@ class _HomePageState extends State<HomePage> {
             25.verticalSpace,
             SizedBox(
                 height: double.maxFinite,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: 10,
-                    itemBuilder: (context, index) => HomePosts(
-                          text:
-                              '${user?.body?.edges[index].node?.owner?.username}',
-                        )))
+                child: FutureBuilder(
+                    future: GetInfo.getSingleUserHome(),
+                    builder: (ctx, AsyncSnapshot<Singleuser?> snapshot) {
+                      if (snapshot.hasData) {
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            itemCount: 10,
+                            itemBuilder: (context, index) => HomePosts(
+                                  text:
+                                      '${snapshot.data?.body?.edges[index].node?.owner?.username}',
+                                ));
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text(
+                            '${snapshot.error} occurred',
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        );
+                      }
+                      return const Text('sfdf');
+                    }))
           ],
         ),
       ),

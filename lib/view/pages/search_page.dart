@@ -4,6 +4,7 @@ import 'package:instagram/view/domen/components/cached_network_image.dart';
 import 'package:instagram/view/style/style.dart';
 
 import '../domen/components/custom_search_textform.dart';
+import '../domen/components/search_results.dart';
 import '../domen/components/timer_search.dart';
 import '../domen/model/search_model.dart';
 import '../domen/repository/repo.dart';
@@ -76,39 +77,12 @@ class _SearchPageState extends State<SearchPage> {
                         scrollDirection: Axis.vertical,
                         itemCount: search?.body.hashtags.length ?? 1,
                         itemBuilder: (context, index) => Padding(
-                              padding: const EdgeInsets.only(left: 14),
-                              child: Container(
-                                margin: EdgeInsets.only(bottom: 14),
-                                height: 52.h,
-                                width: 374.w,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 60,
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.purple),
-                                    ),
-                                    10.horizontalSpace,
-                                    Column(
-                                      children: [
-                                        Text(
-                                          '${search?.body.hashtags[index].hashtag.name}',
-                                          style: Style.textStyleRegular2(),
-                                        ),
-                                        2.verticalSpace,
-                                        Text(
-                                          'Title',
-                                          style:
-                                              Style.textStyleRegular2(size: 14),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )),
+                            padding: const EdgeInsets.only(left: 14),
+                            child: SearchingResult(
+                              title1:
+                                  '${search?.body.hashtags[index].hashtag.name}',
+                              title2: 'title2',
+                            ))),
                   )
                 : Expanded(
                     child: GridView.builder(
