@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram/view/domen/components/cached_network_image.dart';
-import 'package:instagram/view/style/style.dart';
-
 import '../../domen/components/custom_search_textform.dart';
 import '../../domen/components/search_results.dart';
 import '../../domen/components/timer_search.dart';
@@ -31,6 +29,7 @@ class _SearchPageState extends State<SearchPage> {
 
   getInfo() async {
     await getSearch();
+    setState(() {});
   }
 
   getSearch() async {
@@ -75,13 +74,14 @@ class _SearchPageState extends State<SearchPage> {
                 ? Expanded(
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
-                        itemCount: search?.body.hashtags.length ?? 1,
+                        itemCount: search?.body.users.length ?? 0,
                         itemBuilder: (context, index) => Padding(
                             padding: const EdgeInsets.only(left: 14),
                             child: SearchingResult(
                               title1:
-                                  '${search?.body.hashtags[index].hashtag.name}',
-                              title2: 'title2',
+                                  '${search?.body.users[index].user.username}',
+                              title2:
+                                  '${search?.body.users[index].user.fullName}',
                             ))),
                   )
                 : Expanded(

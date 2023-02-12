@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:story/story_image.dart';
 import 'package:story/story_page_view.dart';
-
-import '../../domen/model/stroy_model.dart';
 import '../../domen/model/user_model.dart';
 
 class StroyPage extends StatefulWidget {

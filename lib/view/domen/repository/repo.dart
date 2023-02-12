@@ -4,16 +4,13 @@ import 'package:dio/dio.dart';
 import '../model/Single_User_model.dart';
 import '../model/search_model.dart';
 
-
 abstract class GetInfo {
   GetInfo._();
 
   static getSingleUserHome() async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
-       
-       
+        'X-RapidAPI-Key': '8d73d12368msh94d59547af4d732p151035jsn05efea604202',
         'X-RapidAPI-Host': 'instagram47.p.rapidapi.com'
       },
       baseUrl: "https://instagram47.p.rapidapi.com",
@@ -33,15 +30,13 @@ abstract class GetInfo {
     }
   }
 
-
   static search(String text) async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
-       
-       //8d73d12368msh94d59547af4d732p151035jsn05efea604202
-       
-        
+        'X-RapidAPI-Key': '8d73d12368msh94d59547af4d732p151035jsn05efea604202',
+
+        //8d73d12368msh94d59547af4d732p151035jsn05efea604202
+
         'X-RapidAPI-Host': 'instagram47.p.rapidapi.com'
       },
       baseUrl: "https://instagram47.p.rapidapi.com",
@@ -60,8 +55,6 @@ abstract class GetInfo {
       print("Error2: $e");
     }
   }
-
-
 }
 
 

@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   getInfo() async {
     user = await GetInfo.getSingleUserHome();
+     setState(() {});
     print('User: $user');
   }
 
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             ),
             10.verticalSpace,
             SizedBox(
-                height: double.maxFinite,
+                height: 10000,
                 child: ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),

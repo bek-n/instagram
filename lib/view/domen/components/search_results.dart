@@ -15,15 +15,20 @@ class SearchingResult extends StatelessWidget {
       height: 52.h,
       width: 374.w,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: 60,
             width: 60,
             decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.purple),
+            
+                BoxDecoration(
+                  image: DecorationImage(image: NetworkImage("$image")),
+                  shape: BoxShape.circle, color: Colors.purple),
           ),
           10.horizontalSpace,
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '$title1',
