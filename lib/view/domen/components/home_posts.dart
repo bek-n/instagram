@@ -8,14 +8,15 @@ import '../../../controller/home_controller.dart';
 import '../../style/style.dart';
 
 class HomePosts extends StatefulWidget {
-  final String text, image, username, comment, avatar;
+  final String? text, image, username, comment, avatar, location;
   const HomePosts(
       {super.key,
       required this.text,
       required this.image,
       required this.username,
       required this.comment,
-      required this.avatar});
+      required this.avatar,
+      required this.location});
 
   @override
   State<HomePosts> createState() => _HomePostsState();
@@ -35,15 +36,24 @@ class _HomePostsState extends State<HomePosts> {
                 height: 31.h,
                 width: 31.w,
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage(widget.avatar)),
+                    image: DecorationImage(
+                        image: NetworkImage('${widget.avatar}')),
                     shape: BoxShape.circle,
                     color: Style.blackColor),
               ),
             ),
             8.horizontalSpace,
-            Text(
-              '${widget.text}',
-              style: Style.textStyleRegular2(size: 12),
+            Column(
+              children: [
+                Text(
+                  '${widget.text}',
+                  style: Style.textStyleRegular2(size: 12),
+                ),
+                Text(
+                  '${widget.location}',
+                  style: Style.textStyleRegular2(size: 11),
+                ),
+              ],
             ),
             const Spacer(),
             const Padding(

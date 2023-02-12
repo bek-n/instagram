@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   getInfo() async {
     user = await GetInfo.getSingleUserHome();
-     setState(() {});
+    setState(() {});
     print('User: $user');
   }
 
@@ -80,6 +80,8 @@ class _HomePageState extends State<HomePage> {
                               '${user?.body?.edges[index].node?.owner?.username}',
                           avatar:
                               'https://fotografias.antena3.com/clipping/cmsimages01/2022/05/07/FB652FAE-E68A-4773-B4E8-662369DC3698/curioso-nombre-que-cristiano-ronaldo-georgina-rodriguez-han-puesto-hija-recien-nacida_104.jpg?crop=482,482,x154,y0&width=1200&height=1200&optimize=low&format=webply',
+                          location:
+                              '${user?.body?.edges[index].node?.location?.name ?? ''}',
                         )))
           ],
         ),
