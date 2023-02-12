@@ -35,31 +35,37 @@ class _SearchingResultState extends State<SearchingResult> {
             radius: 10,
           ),
           10.horizontalSpace,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+          Expanded(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '${widget.title1}',
-                    style: Style.textStyleRegular2(),
+                  Row(
+                    children: [
+                      Text(
+                        '${widget.title1}',
+                        style: Style.textStyleRegular2(),
+                      ),
+                      5.horizontalSpace,
+                      widget.verified == 'true'
+                          ? Icon(
+                              Icons.verified,
+                              color: Style.primaryColor,
+                              size: 16,
+                            )
+                          : SizedBox.shrink()
+                    ],
                   ),
-                  5.horizontalSpace,
-                  widget.verified == 'true'
-                      ? Icon(
-                          Icons.verified,
-                          color: Style.primaryColor,
-                          size: 16,
-                        )
-                      : SizedBox.shrink()
+                  2.verticalSpace,
+                  Text(
+                    '${widget.title2}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: Style.textStyleRegular2(size: 14),
+                  ),
                 ],
               ),
-              2.verticalSpace,
-              Text(
-                '${widget.title2}',
-                style: Style.textStyleRegular2(size: 14),
-              ),
-            ],
+            ),
           )
         ],
       ),

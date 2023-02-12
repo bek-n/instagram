@@ -33,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
 
   getInfo() async {
     await getSearch();
-    await getPublic();
+
     setState(() {});
   }
 
@@ -44,15 +44,6 @@ class _SearchPageState extends State<SearchPage> {
     isLoading = false;
     setState(() {});
     print(search);
-  }
-
-  getPublic() async {
-    isLoading;
-    setState(() {});
-    user = await GetInfo.getSingleUserHome();
-    isLoading = false;
-    setState(() {});
-    print('User: $user');
   }
 
   @override
@@ -88,35 +79,34 @@ class _SearchPageState extends State<SearchPage> {
             ),
             25.verticalSpace,
             change.isNotEmpty
-                ? Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: search?.body.users.length ?? 0,
-                        itemBuilder: (context, index) => Padding(
-                            padding: const EdgeInsets.only(left: 14),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (_) => UserPage(
-                                          id: '${search?.body.users[index].user.pkId}',
-                                          profile:
-                                              '${user?.body?.edges[index].node}',
-                                          searchprofile:
-                                              '${search?.body.users[index]}',
-                                        )));
-                              },
-                              child: SearchingResult(
-                                title1:
-                                    '${search?.body.users[index].user.username}',
-                                title2:
-                                    '${search?.body.users[index].user.fullName}',
-                                image:
-                                    '${search?.body.users[index].user.profilePicUrl}',
-                                verified:
-                                    '${search?.body.users[index].user.isVerified}',
-                              ),
-                            ))),
-                  )
+                ? isLoading
+                    ? CircularProgressIndicator()
+                    : Expanded(
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: search?.body.users.length ?? 0,
+                            itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.only(left: 14),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (_) => UserPage(
+                                                  id: '${search?.body.users[index].user.pkId}',
+                                                )));
+                                  },
+                                  child: SearchingResult(
+                                    title1:
+                                        '${search?.body.users[index].user.username}',
+                                    title2:
+                                        '${search?.body.users[index].user.fullName}',
+                                    image:
+                                        '${search?.body.users[index].user.profilePicUrl}',
+                                    verified:
+                                        '${search?.body.users[index].user.isVerified}',
+                                  ),
+                                ))),
+                      )
                 : Expanded(
                     child: GridView.builder(
                         gridDelegate:
