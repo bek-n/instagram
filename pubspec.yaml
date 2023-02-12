@@ -42,10 +42,17 @@ dependencies:
   story: ^1.0.0+1
   cached_network_image: ^3.2.3
   dio: ^4.0.6
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'assets/images/mainLogo.png'     
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
