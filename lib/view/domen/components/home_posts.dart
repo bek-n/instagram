@@ -42,12 +42,23 @@ class _HomePostsState extends State<HomePosts> {
                     color: Style.blackColor),
               ),
             ),
-            8.horizontalSpace,
+            10.horizontalSpace,
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '${widget.text}',
-                  style: Style.textStyleRegular2(size: 12),
+                Row(
+                  children: [
+                    Text(
+                      '${widget.text}',
+                      style: Style.textStyleRegular2(size: 12),
+                    ),
+                    5.horizontalSpace,
+                    Icon(
+                      Icons.verified,
+                      color: Style.primaryColor,
+                      size: 16,
+                    )
+                  ],
                 ),
                 Text(
                   '${widget.location}',

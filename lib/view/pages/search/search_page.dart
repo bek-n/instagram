@@ -10,7 +10,8 @@ import '../../domen/model/search_model.dart';
 import '../../domen/repository/repo.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  final Search? search;
+  const SearchPage({super.key, this.search});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -93,8 +94,7 @@ class _SearchPageState extends State<SearchPage> {
                                         .push(MaterialPageRoute(
                                             builder: (_) => UserPage(
                                                   id: '${search?.body.users[index].user.pkId}',
-                                                  indx: index,
-                                                  Searchinfo: '${search?.body}',
+                                                  Searchinfo: widget.search, indx: index,
                                                 )));
                                   },
                                   child: SearchingResult(

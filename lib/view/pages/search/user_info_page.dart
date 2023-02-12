@@ -11,13 +11,14 @@ import '../../domen/repository/repo.dart';
 import '../../style/style.dart';
 
 class UserPage extends StatefulWidget {
-  
-  final String? Searchinfo;
+  final Search? Searchinfo;
   final int indx;
   final String id;
   const UserPage({
     super.key,
-    required this.id, required this.Searchinfo, required this.indx,
+    required this.id,
+    required this.Searchinfo,
+    required this.indx,
   });
 
   @override
@@ -26,7 +27,7 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   bool isLoading = true;
-   Singleuser? user;
+  Singleuser? user;
 
   @override
   void initState() {
@@ -43,6 +44,8 @@ class _UserPageState extends State<UserPage> {
     print('User: $user');
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +60,7 @@ class _UserPageState extends State<UserPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
         title: Text(
-          'username',
+          '${user?.body?.edges[0].node?.owner?.username}',
           style: Style.textStyleRegular2(),
         ),
         actions: [
@@ -83,14 +86,15 @@ class _UserPageState extends State<UserPage> {
                     posts: '1,234',
                   ),
                   6.verticalSpace,
-                  const Padding(
+                  Padding(
                       padding: EdgeInsets.only(left: 12),
                       child: UserBio(
                         category: 'Category/Genre text',
                         description:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
                         link: 'Link goes here',
-                        username: 'Username',
+                        username:
+                            '${user?.body?.edges[0].node?.owner?.username}',
                       )),
                   12.verticalSpace,
                   const FollowButtons(),
@@ -107,6 +111,7 @@ class _UserPageState extends State<UserPage> {
                   SizedBox(
                     height: 10000,
                     child: GridView.builder(
+                        itemCount: user?.body?.edges.length,
                         physics: NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             mainAxisSpacing: 3,
@@ -115,7 +120,7 @@ class _UserPageState extends State<UserPage> {
                         itemBuilder: (context, index) => CustomImageNetwork(
                             radius: 0,
                             image:
-                                'https://source.unsplash.com/random/$index')),
+                                '${user?.body?.edges[index].node?.displayUrl}')),
                   )
                 ],
               ),
