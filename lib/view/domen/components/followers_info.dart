@@ -5,7 +5,12 @@ import '../../style/style.dart';
 
 class FollowersInfo extends StatelessWidget {
   final String image, posts, followers, following;
-  const FollowersInfo({super.key, required this.image, required this.posts, required this.followers, required this.following});
+  const FollowersInfo(
+      {super.key,
+      required this.image,
+      required this.posts,
+      required this.followers,
+      required this.following});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +21,8 @@ class FollowersInfo extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/ring.png',
-              height: 90,
-              width: 90,
+              height: 85,
+              width: 85,
             ),
             Positioned(
               left: 7,
@@ -29,9 +34,7 @@ class FollowersInfo extends StatelessWidget {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: NetworkImage(
-                            image),
-                        fit: BoxFit.cover)),
+                        image: NetworkImage(image), fit: BoxFit.cover)),
               ),
             ),
           ],

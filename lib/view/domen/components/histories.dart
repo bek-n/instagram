@@ -28,16 +28,18 @@ class Histories extends StatelessWidget {
               },
               child: Stack(
                 children: [
-                  Image.asset(
-                    'assets/images/ring.png',
-                    height: 95,
-                    width: 95,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12),
+                    child: Image.asset(
+                      'assets/images/ring.png',
+                      height: 66,
+                      width: 66,
+                    ),
                   ),
                   Positioned(
                     left: 17,
-                    top: 4,
+                    top: 5,
                     child: Container(
-                      margin: EdgeInsets.only(right: 12),
                       height: 61.h,
                       width: 61.w,
                       decoration: BoxDecoration(

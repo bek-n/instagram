@@ -71,19 +71,6 @@ class _UserPageState extends State<UserPage> {
                 SvgPicture.asset('assets/svg/otmetka.svg'),
               ],
             ),
-            SizedBox(
-              height: double.maxFinite,
-              child: GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) => CustomImageNetwork(
-                        image: 'https://source.unsplash.com/random/$index',
-                        height: 129,
-                        width: 129,
-                      )),
-            )
           ],
         ),
       ),

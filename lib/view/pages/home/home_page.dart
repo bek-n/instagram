@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 const MyHistory(),
-                5.horizontalSpace,
+                10.horizontalSpace,
                 const Histories()
               ],
             ),
