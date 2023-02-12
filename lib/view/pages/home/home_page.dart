@@ -56,11 +56,11 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 const MyHistory(),
-                18.horizontalSpace,
+                5.horizontalSpace,
                 const Histories()
               ],
             ),
-            25.verticalSpace,
+            10.verticalSpace,
             SizedBox(
                 height: double.maxFinite,
                 child: ListView.builder(

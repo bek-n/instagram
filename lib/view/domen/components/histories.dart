@@ -12,8 +12,8 @@ class Histories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 63,
-      width: 300,
+      height: 70,
+      width: 310,
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -26,17 +26,30 @@ class Histories extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (_) => const StroyPage()));
               },
-              child: Container(
-                margin: EdgeInsets.only(right: 12),
-                height: 61.h,
-                width: 61.w,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          user.imageUrl,
-                        ),
-                        fit: BoxFit.cover)),
+              child: Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/ring.png',
+                    height: 95,
+                    width: 95,
+                  ),
+                  Positioned(
+                    left: 17,
+                    top: 4,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 12),
+                      height: 61.h,
+                      width: 61.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                user.imageUrl,
+                              ),
+                              fit: BoxFit.cover)),
+                    ),
+                  ),
+                ],
               ),
             );
           }),

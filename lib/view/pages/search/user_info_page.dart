@@ -44,16 +44,29 @@ class _UserPageState extends State<UserPage> {
             Row(
               children: [
                 19.horizontalSpace,
-                Container(
-                  margin: EdgeInsets.only(right: 12),
-                  height: 76.h,
-                  width: 76.w,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              'https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
-                          fit: BoxFit.cover)),
+                Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/ring.png',
+                      height: 90,
+                      width: 90,
+                    ),
+                    Positioned(
+                      left: 7,
+                      top: 7,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 12),
+                        height: 76.h,
+                        width: 76.w,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
+                                fit: BoxFit.cover)),
+                      ),
+                    ),
+                  ],
                 ),
                 60.horizontalSpace,
                 Column(
