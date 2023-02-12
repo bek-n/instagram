@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../pages/story_page.dart';
+import '../../pages/home/story_page.dart';
 import '../model/user_model.dart';
 
 class Histories extends StatelessWidget {

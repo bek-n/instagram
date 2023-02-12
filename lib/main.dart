@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:instagram/view/pages/general_page.dart';
+import 'package:instagram/view/pages/home/general_page.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/home_controller.dart';

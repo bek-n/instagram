@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/view/domen/model/Single_User_model.dart';
 import 'package:instagram/view/style/style.dart';
-import '../domen/components/histories.dart';
-import '../domen/components/home_posts.dart';
-import '../domen/components/my_history.dart';
-import '../domen/repository/repo.dart';
+import '../../domen/components/histories.dart';
+import '../../domen/components/home_posts.dart';
+import '../../domen/components/my_history.dart';
+import '../../domen/repository/repo.dart';
 
 
 class HomePage extends StatefulWidget {

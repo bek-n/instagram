@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram/view/pages/home_page.dart';
+import 'package:instagram/view/pages/home/home_page.dart';
 import 'package:instagram/view/pages/search_page.dart';
 import 'package:instagram/view/style/style.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/home_controller.dart';
+import '../../../controller/home_controller.dart';
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
