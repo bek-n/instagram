@@ -5,9 +5,8 @@ import 'package:instagram/view/pages/home/home_page.dart';
 import 'package:instagram/view/pages/search/search_page.dart';
 import 'package:instagram/view/style/style.dart';
 import 'package:provider/provider.dart';
-
 import '../../../controller/home_controller.dart';
-import '../search/user_info_page.dart';
+
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
