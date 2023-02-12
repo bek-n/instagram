@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import '../model/Single_User_model.dart';
 import '../model/search_model.dart';
@@ -9,7 +11,7 @@ abstract class GetInfo {
   static getSingleUserHome() async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
        
        
         'X-RapidAPI-Host': 'instagram47.p.rapidapi.com'
@@ -23,11 +25,11 @@ abstract class GetInfo {
           responseHeader: false));
     try {
       var response = await _dio.get('/public_user_posts?userid=173560420');
-      print(response.data.toString());
+      log(response.data.toString());
 
-      return singleuserFromJson(response.data);
+      return Singleuser.fromJson(response.data);
     } catch (e) {
-      print(e);
+      print("Error1: $e");
     }
   }
 
@@ -35,7 +37,7 @@ abstract class GetInfo {
   static search(String text) async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8d73d12368msh94d59547af4d732p151035jsn05efea604202',
        
        //8d73d12368msh94d59547af4d732p151035jsn05efea604202
        
@@ -53,9 +55,9 @@ abstract class GetInfo {
       var response = await _dio.get('/search?search=$text');
       print(response.data.toString());
 
-      return searchFromJson(response.data);
+      return Search.fromJson(response.data);
     } catch (e) {
-      print(e);
+      print("Error2: $e");
     }
   }
 

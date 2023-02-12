@@ -71,6 +71,12 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) => HomePosts(
                           text:
                               '${user?.body?.edges[index].node?.owner?.username}',
+                          comment: '',
+                          image:
+                              ' ${user?.body?.edges[index].node?.displayResources[2].src}',
+                          username:
+                              '${user?.body?.edges[index].node?.owner?.username}',
+                          avatar: '',
                         )))
           ],
         ),

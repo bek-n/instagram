@@ -263,13 +263,13 @@ class Resource {
         required this.src,
     });
 
-    num configWidth;
-    num configHeight;
+    String configWidth;
+    String configHeight;
     String src;
 
     factory Resource.fromJson(Map json) => Resource(
-        configWidth: json["config_width"],
-        configHeight: json["config_height"],
+        configWidth: json["config_width"].toString(),
+        configHeight: json["config_height"].toString(),
         src: json["src"],
     );
 
@@ -409,17 +409,17 @@ class TentacledNode {
     });
 
     bool didReportAsSpam;
-    num id;
+    String id;
     bool viewerHasLiked;
-    num createdAt;
+    String createdAt;
     UserClass? owner;
     String text;
 
     factory TentacledNode.fromJson(Map json) => TentacledNode(
         didReportAsSpam: json["did_report_as_spam"],
-        id: json["id"],
+        id: json["id"].toString(),
         viewerHasLiked: json["viewer_has_liked"],
-        createdAt: json["created_at"],
+        createdAt: json["created_at"].toString(),
         owner: json["owner"] != null ? UserClass.fromJson(json["owner"]) : null ,
         text: json["text"],
     );
@@ -446,14 +446,14 @@ class UserClass {
     bool isVerified;
     String username;
     String profilePicUrl;
-    num id;
+    String id;
     String? fullName;
 
     factory UserClass.fromJson(Map json) => UserClass(
         isVerified: json["is_verified"],
         username: json["username"],
         profilePicUrl: json["profile_pic_url"],
-        id: json["id"],
+        id: json["id"].toString(),
         fullName: json["full_name"],
     );
 
@@ -541,11 +541,11 @@ class SponsorClass {
     });
 
     String username;
-    num id;
+    String id;
 
     factory SponsorClass.fromJson(Map  json) => SponsorClass(
         username: json["username"],
-        id: json["id"],
+        id: json["id"].toString(),
     );
 
     Map  toJson() => {
@@ -662,7 +662,7 @@ class IndecentNode {
     List<Resource> displayResources;
     bool shouldLogClientEvent;
     EdgeMediaToTaggedUser? edgeMediaToTaggedUser;
-    num id;
+    String id;
     bool isVideo;
     String typename;
     String trackingToken;
@@ -674,7 +674,7 @@ class IndecentNode {
         displayResources: List<Resource>.from(json["display_resources"].map((x) => Resource.fromJson(x))),
         shouldLogClientEvent: json["should_log_client_event"],
         edgeMediaToTaggedUser:json["edge_media_to_tagged_user"] != null ?  EdgeMediaToTaggedUser.fromJson(json["edge_media_to_tagged_user"]) : null,
-        id: json["id"],
+        id: json["id"].toString(),
         isVideo: json["is_video"],
         typename: json["__typename"],
         trackingToken: json["tracking_token"],

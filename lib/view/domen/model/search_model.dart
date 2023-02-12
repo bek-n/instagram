@@ -19,7 +19,7 @@ class Search {
     dynamic code;
     Body body;
     String status;
-    int statusCode;
+    num statusCode;
 
     factory Search.fromJson(Map<String, dynamic> json) => Search(
         code: json["code"],
@@ -83,7 +83,7 @@ class HashtagElement {
     });
 
     HashtagHashtag hashtag;
-    int position;
+    num position;
 
     factory HashtagElement.fromJson(Map<String, dynamic> json) => HashtagElement(
         hashtag: HashtagHashtag.fromJson(json["hashtag"]),
@@ -106,14 +106,14 @@ class HashtagHashtag {
     });
 
     String searchResultSubtitle;
-    double id;
-    int mediaCount;
+    String id;
+    num mediaCount;
     String name;
     bool useDefaultAvatar;
 
     factory HashtagHashtag.fromJson(Map<String, dynamic> json) => HashtagHashtag(
         searchResultSubtitle: json["search_result_subtitle"],
-        id: json["id"]?.toDouble(),
+        id: json["id"]?.toString() ?? "",
         mediaCount: json["media_count"],
         name: json["name"],
         useDefaultAvatar: json["use_default_avatar"],
@@ -134,7 +134,7 @@ class PlaceElement {
         required this.place,
     });
 
-    int position;
+    num position;
     PlacePlace place;
 
     factory PlaceElement.fromJson(Map<String, dynamic> json) => PlaceElement(
@@ -199,11 +199,11 @@ class Location {
     bool hasViewerSaved;
     String name;
     String externalSource;
-    double lng;
+    String lng;
     String address;
     String city;
-    double lat;
-    int facebookPlacesId;
+    String lat;
+    num facebookPlacesId;
 
     factory Location.fromJson(Map<String, dynamic> json) => Location(
         pk: json["pk"],
@@ -211,10 +211,10 @@ class Location {
         hasViewerSaved: json["has_viewer_saved"],
         name: json["name"],
         externalSource: json["external_source"],
-        lng: json["lng"]?.toDouble(),
+        lng: json["lng"]?.toString() ?? "",
         address: json["address"],
         city: json["city"],
-        lat: json["lat"]?.toDouble(),
+        lat: json["lat"]?.toString() ?? "",
         facebookPlacesId: json["facebook_places_id"],
     );
 
@@ -249,7 +249,7 @@ class UserElement {
     });
 
     UserUser user;
-    int position;
+    num position;
 
     factory UserElement.fromJson(Map<String, dynamic> json) => UserElement(
         user: UserUser.fromJson(json["user"]),
@@ -290,7 +290,7 @@ class UserUser {
     String pkId;
     bool shouldShowCategory;
     dynamic liveBroadcastId;
-    int latestReelMedia;
+    num latestReelMedia;
     MediaBundles accountBadges;
     String profilePicUrl;
     bool isVerified;
