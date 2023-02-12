@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/view/domen/components/cached_network_image.dart';
 import '../../domen/components/follow_button.dart';
 import '../../domen/components/followers_info.dart';
 import '../../domen/components/user_bio.dart';
@@ -70,6 +71,19 @@ class _UserPageState extends State<UserPage> {
                 SvgPicture.asset('assets/svg/otmetka.svg'),
               ],
             ),
+            SizedBox(
+              height: double.maxFinite,
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context, index) => CustomImageNetwork(
+                        image: 'https://source.unsplash.com/random/$index',
+                        height: 129,
+                        width: 129,
+                      )),
+            )
           ],
         ),
       ),
