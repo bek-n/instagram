@@ -67,8 +67,7 @@ class _HomePageState extends State<HomePage> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
-                    itemCount: user
-                        ?.body?.edges[0].node?.displayResources[2].src.length,
+                    itemCount: user?.body?.edges.length,
                     itemBuilder: (context, index) => HomePosts(
                           text:
                               '${user?.body?.edges[index].node?.owner?.username}',
