@@ -60,7 +60,16 @@ class _UserPageState extends State<UserPage> {
                   username: 'Username',
                 )),
             12.verticalSpace,
-            const FollowButtons()
+            const FollowButtons(),
+            35.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(Icons.grid_on),
+                SvgPicture.asset('assets/svg/reel.svg'),
+                SvgPicture.asset('assets/svg/otmetka.svg'),
+              ],
+            ),
           ],
         ),
       ),
