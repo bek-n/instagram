@@ -100,14 +100,37 @@ class _UserPageState extends State<UserPage> {
                 ),
               ],
             ),
-            Text(
-              'Username',
-              style: Style.textStyleRegular2(),
-            ),
-            Text(
-              'Category/Genre text',
-              style: Style.textStyleRegular2(
-                  size: 13, textColor: Style.greyColor90),
+            6.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.only(left: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Username',
+                    style: Style.textStyleRegular2(),
+                  ),
+                  3.verticalSpace,
+                  Text(
+                    'Category/Genre text',
+                    style: Style.textStyleRegular2(
+                        size: 13, textColor: Style.greyColor90),
+                  ),
+                  3.verticalSpace,
+                  Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                    style: Style.textStyleRegular2(
+                      size: 13,
+                    ),
+                  ),
+                  3.verticalSpace,
+                  Text(
+                    'Link goes here',
+                    style: Style.textStyleRegular2(
+                        size: 13, textColor: Style.linkColor),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
