@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/view/pages/home/home_page.dart';
-import 'package:instagram/view/pages/search_page.dart';
+import 'package:instagram/view/pages/search/search_page.dart';
 import 'package:instagram/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/home_controller.dart';
+import '../search/user_info_page.dart';
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
@@ -19,7 +20,7 @@ class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
     const HomePage(),
     const SearchPage(),
-    const Placeholder(),
+    const UserPage(),
     const Placeholder(),
     const Placeholder(),
   ];

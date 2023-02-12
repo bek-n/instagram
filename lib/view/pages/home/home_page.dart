@@ -8,7 +8,6 @@ import '../../domen/components/home_posts.dart';
 import '../../domen/components/my_history.dart';
 import '../../domen/repository/repo.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -34,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Style.whiteColor,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Style.whiteColor,

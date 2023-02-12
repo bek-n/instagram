@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram/view/domen/components/cached_network_image.dart';
 import 'package:instagram/view/style/style.dart';
 
-import '../domen/components/custom_search_textform.dart';
-import '../domen/components/search_results.dart';
-import '../domen/components/timer_search.dart';
-import '../domen/model/search_model.dart';
-import '../domen/repository/repo.dart';
+import '../../domen/components/custom_search_textform.dart';
+import '../../domen/components/search_results.dart';
+import '../../domen/components/timer_search.dart';
+import '../../domen/model/search_model.dart';
+import '../../domen/repository/repo.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
