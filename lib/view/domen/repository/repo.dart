@@ -6,10 +6,10 @@ import '../model/search_model.dart';
 abstract class GetInfo {
   GetInfo._();
 
-  static Future<Singleuser?> getSingleUserHome() async {
+  static getSingleUserHome() async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '8d73d12368msh94d59547af4d732p151035jsn05efea604202',
+        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
        
        
         'X-RapidAPI-Host': 'instagram47.p.rapidapi.com'
@@ -29,7 +29,6 @@ abstract class GetInfo {
     } catch (e) {
       print(e);
     }
-    return null;
   }
 
 
