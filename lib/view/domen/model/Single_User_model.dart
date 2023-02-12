@@ -513,7 +513,7 @@ class FluffyEdge {
         node:json["node"] != null ? StickyNode.fromJson(json["node"]) : null,
     );
 
-    Map<String, dynamic> toJson() => {
+    Map toJson() => {
         "node": node?.toJson(),
     };
 }
