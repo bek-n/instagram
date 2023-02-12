@@ -132,6 +132,53 @@ class _UserPageState extends State<UserPage> {
                 ],
               ),
             ),
+            12.verticalSpace,
+            Row(
+              children: [
+                12.horizontalSpace,
+                Container(
+                  height: 40.h,
+                  width: 180.w,
+                  decoration: BoxDecoration(
+                      color: Style.primaryColor,
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Center(
+                      child: Text(
+                    'Follow',
+                    style: Style.textStyleRegular2(
+                        size: 13, textColor: Style.whiteColor),
+                  )),
+                ),
+                6.horizontalSpace,
+                Container(
+                  height: 40.h,
+                  width: 180.w,
+                  decoration: BoxDecoration(
+                      color: Style.greyColor90,
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Center(
+                      child: Text(
+                    'Message',
+                    style: Style.textStyleRegular2(
+                        size: 13, textColor: Style.whiteColor),
+                  )),
+                ),
+                6.horizontalSpace,
+                Container(
+                  height: 30.h,
+                  width: 32.w,
+                  decoration: BoxDecoration(
+                      color: Style.greyColor90,
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Center(
+                      child: Icon(
+                    Icons.person_add,
+                    size: 17,
+                    color: Style.whiteColor,
+                  )),
+                )
+              ],
+            )
           ],
         ),
       ),
