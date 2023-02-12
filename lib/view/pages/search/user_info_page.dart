@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram/view/pages/home/general_page.dart';
-
+import '../../domen/components/follow_button.dart';
+import '../../domen/components/followers_info.dart';
+import '../../domen/components/user_bio.dart';
 import '../../style/style.dart';
 
 class UserPage extends StatefulWidget {
@@ -41,144 +42,25 @@ class _UserPageState extends State<UserPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                19.horizontalSpace,
-                Stack(
-                  children: [
-                    Image.asset(
-                      'assets/images/ring.png',
-                      height: 90,
-                      width: 90,
-                    ),
-                    Positioned(
-                      left: 7,
-                      top: 7,
-                      child: Container(
-                        margin: EdgeInsets.only(right: 12),
-                        height: 76.h,
-                        width: 76.w,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
-                                fit: BoxFit.cover)),
-                      ),
-                    ),
-                  ],
-                ),
-                60.horizontalSpace,
-                Column(
-                  children: [
-                    Text(
-                      '1,234',
-                      style: Style.textStyleRegular2(size: 14),
-                    ),
-                    Text('Posts'),
-                  ],
-                ),
-                24.horizontalSpace,
-                Column(
-                  children: [
-                    Text(
-                      '5,678',
-                      style: Style.textStyleRegular2(size: 14),
-                    ),
-                    Text('Followers'),
-                  ],
-                ),
-                24.horizontalSpace,
-                Column(
-                  children: [
-                    Text(
-                      '9,286',
-                      style: Style.textStyleRegular2(size: 14),
-                    ),
-                    Text('Following'),
-                  ],
-                ),
-              ],
+            const FollowersInfo(
+              followers: '5,678',
+              following: '9,286',
+              image:
+                  'https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+              posts: '1,234',
             ),
             6.verticalSpace,
-            Padding(
-              padding: const EdgeInsets.only(left: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Username',
-                    style: Style.textStyleRegular2(),
-                  ),
-                  3.verticalSpace,
-                  Text(
-                    'Category/Genre text',
-                    style: Style.textStyleRegular2(
-                        size: 13, textColor: Style.greyColor90),
-                  ),
-                  3.verticalSpace,
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-                    style: Style.textStyleRegular2(
-                      size: 13,
-                    ),
-                  ),
-                  3.verticalSpace,
-                  Text(
-                    'Link goes here',
-                    style: Style.textStyleRegular2(
-                        size: 13, textColor: Style.linkColor),
-                  ),
-                ],
-              ),
-            ),
+            const Padding(
+                padding: EdgeInsets.only(left: 12),
+                child: UserBio(
+                  category: 'Category/Genre text',
+                  description:
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                  link: 'Link goes here',
+                  username: 'Username',
+                )),
             12.verticalSpace,
-            Row(
-              children: [
-                12.horizontalSpace,
-                Container(
-                  height: 40.h,
-                  width: 180.w,
-                  decoration: BoxDecoration(
-                      color: Style.primaryColor,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Center(
-                      child: Text(
-                    'Follow',
-                    style: Style.textStyleRegular2(
-                        size: 13, textColor: Style.whiteColor),
-                  )),
-                ),
-                6.horizontalSpace,
-                Container(
-                  height: 40.h,
-                  width: 180.w,
-                  decoration: BoxDecoration(
-                      color: Style.greyColor90,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Center(
-                      child: Text(
-                    'Message',
-                    style: Style.textStyleRegular2(
-                        size: 13, textColor: Style.whiteColor),
-                  )),
-                ),
-                6.horizontalSpace,
-                Container(
-                  height: 30.h,
-                  width: 32.w,
-                  decoration: BoxDecoration(
-                      color: Style.greyColor90,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Center(
-                      child: Icon(
-                    Icons.person_add,
-                    size: 17,
-                    color: Style.whiteColor,
-                  )),
-                )
-              ],
-            )
+            const FollowButtons()
           ],
         ),
       ),
