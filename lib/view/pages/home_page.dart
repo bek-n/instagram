@@ -6,6 +6,7 @@ import 'package:instagram/view/style/style.dart';
 import '../domen/components/histories.dart';
 import '../domen/components/home_posts.dart';
 import '../domen/components/my_history.dart';
+import '../domen/repository/repo.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -19,16 +20,16 @@ class _HomePageState extends State<HomePage> {
   bool like = false;
   Singleuser? user;
 
-  // @override
-  // void initState() {
-  //   getInfo();
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    getInfo();
+    super.initState();
+  }
 
-  // getInfo() async {
-  //   user = await GetInfo.getSingleUserHome();
-  //   print('User: $user');
-  // }
+  getInfo() async {
+    user = await GetInfo.getSingleUserHome();
+    print('User: $user');
+  }
 
   @override
   Widget build(BuildContext context) {
