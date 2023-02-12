@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:instagram/view/domen/components/cached_network_image.dart';
 
 import '../../style/style.dart';
 
 class SearchingResult extends StatelessWidget {
-  final String? image, title1, title2;
+  final String image, title1, title2;
   const SearchingResult(
-      {super.key, this.image, required this.title1, required this.title2});
+      {super.key,
+      required this.image,
+      required this.title1,
+      required this.title2});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +21,11 @@ class SearchingResult extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          CustomImageNetwork(
+            image: image,
             height: 60,
             width: 60,
-            decoration:
-            
-                BoxDecoration(
-                  image: DecorationImage(image: NetworkImage("$image")),
-                  shape: BoxShape.circle, color: Colors.purple),
+            radius: 10,
           ),
           10.horizontalSpace,
           Column(

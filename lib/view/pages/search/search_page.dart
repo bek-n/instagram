@@ -82,6 +82,8 @@ class _SearchPageState extends State<SearchPage> {
                                   '${search?.body.users[index].user.username}',
                               title2:
                                   '${search?.body.users[index].user.fullName}',
+                              image:
+                                  '${search?.body.users[index].user.profilePicUrl}',
                             ))),
                   )
                 : Expanded(
