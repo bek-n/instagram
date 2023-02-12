@@ -41,12 +41,10 @@ class _GeneralPageState extends State<GeneralPage> {
           selectedIconTheme: IconThemeData(color: Style.blackColor),
           type: BottomNavigationBarType.fixed,
           items: [
-            const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                ),
-                label: ''),
-            const BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/svg/home.svg'), label: ''),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/svg/search.svg'), label: ''),
             const BottomNavigationBarItem(
                 icon: Icon(Icons.add_box_outlined), label: ''),
             BottomNavigationBarItem(
