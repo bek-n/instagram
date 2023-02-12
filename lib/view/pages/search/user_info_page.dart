@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/view/domen/components/cached_network_image.dart';
+import 'package:instagram/view/domen/model/search_model.dart';
 import '../../domen/components/follow_button.dart';
 import '../../domen/components/followers_info.dart';
 import '../../domen/components/user_bio.dart';
 import '../../domen/model/Single_User_model.dart';
-import '../../domen/model/search_model.dart';
 import '../../domen/repository/repo.dart';
 import '../../style/style.dart';
 
 class UserPage extends StatefulWidget {
+  
+  final String? Searchinfo;
+  final int indx;
   final String id;
   const UserPage({
     super.key,
-    required this.id,
+    required this.id, required this.Searchinfo, required this.indx,
   });
 
   @override
@@ -23,8 +26,7 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   bool isLoading = true;
-  Singleuser? user;
-  Search? user2;
+   Singleuser? user;
 
   @override
   void initState() {

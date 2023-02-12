@@ -93,6 +93,8 @@ class _SearchPageState extends State<SearchPage> {
                                         .push(MaterialPageRoute(
                                             builder: (_) => UserPage(
                                                   id: '${search?.body.users[index].user.pkId}',
+                                                  indx: index,
+                                                  Searchinfo: '${search?.body}',
                                                 )));
                                   },
                                   child: SearchingResult(
