@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool like = false;
   Singleuser? user;
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -26,7 +27,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   getInfo() async {
+    isLoading;
+    setState(() {});
     user = await GetInfo.getSingleUserHome();
+    isLoading = false;
     setState(() {});
     print('User: $user');
   }
@@ -51,41 +55,43 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                const MyHistory(),
-                10.horizontalSpace,
-                const Histories()
-              ],
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const MyHistory(),
+                      10.horizontalSpace,
+                      const Histories()
+                    ],
+                  ),
+                  10.verticalSpace,
+                  SizedBox(
+                      height: 10000,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: user?.body?.edges.length,
+                          itemBuilder: (context, index) => HomePosts(
+                                text:
+                                    '${user?.body?.edges[index].node?.owner?.username}',
+                                comment:
+                                    '${user?.body?.edges[index].node?.edgeMediaToCaption?.edges[0].node?.text}',
+                                image:
+                                    '${user?.body?.edges[index].node?.displayResources[2].src}',
+                                username:
+                                    '${user?.body?.edges[index].node?.owner?.username}',
+                                avatar:
+                                    'https://fotografias.antena3.com/clipping/cmsimages01/2022/05/07/FB652FAE-E68A-4773-B4E8-662369DC3698/curioso-nombre-que-cristiano-ronaldo-georgina-rodriguez-han-puesto-hija-recien-nacida_104.jpg?crop=482,482,x154,y0&width=1200&height=1200&optimize=low&format=webply',
+                                location:
+                                    '${user?.body?.edges[index].node?.location?.name ?? ''}',
+                              )))
+                ],
+              ),
             ),
-            10.verticalSpace,
-            SizedBox(
-                height: 10000,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: user?.body?.edges.length,
-                    itemBuilder: (context, index) => HomePosts(
-                          text:
-                              '${user?.body?.edges[index].node?.owner?.username}',
-                          comment:
-                              '${user?.body?.edges[index].node?.edgeMediaToCaption?.edges[0].node?.text}',
-                          image:
-                              '${user?.body?.edges[index].node?.displayResources[2].src}',
-                          username:
-                              '${user?.body?.edges[index].node?.owner?.username}',
-                          avatar:
-                              'https://fotografias.antena3.com/clipping/cmsimages01/2022/05/07/FB652FAE-E68A-4773-B4E8-662369DC3698/curioso-nombre-que-cristiano-ronaldo-georgina-rodriguez-han-puesto-hija-recien-nacida_104.jpg?crop=482,482,x154,y0&width=1200&height=1200&optimize=low&format=webply',
-                          location:
-                              '${user?.body?.edges[index].node?.location?.name ?? ''}',
-                        )))
-          ],
-        ),
-      ),
     );
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram/view/domen/components/cached_network_image.dart';
+import 'package:instagram/view/pages/search/user_info_page.dart';
 import '../../domen/components/custom_search_textform.dart';
 import '../../domen/components/search_results.dart';
 import '../../domen/components/timer_search.dart';
+import '../../domen/model/Single_User_model.dart';
 import '../../domen/model/search_model.dart';
 import '../../domen/repository/repo.dart';
 
@@ -19,6 +21,8 @@ class _SearchPageState extends State<SearchPage> {
   Search? search;
   String change = '';
   final _delayed = Delayed(milliseconds: 700);
+  bool isLoading = true;
+  Singleuser? user;
 
   @override
   void initState() {
@@ -29,13 +33,26 @@ class _SearchPageState extends State<SearchPage> {
 
   getInfo() async {
     await getSearch();
+    await getPublic();
     setState(() {});
   }
 
   getSearch() async {
+    isLoading;
+    setState(() {});
     search = await GetInfo.search(change);
+    isLoading = false;
     setState(() {});
     print(search);
+  }
+
+  getPublic() async {
+    isLoading;
+    setState(() {});
+    user = await GetInfo.getSingleUserHome();
+    isLoading = false;
+    setState(() {});
+    print('User: $user');
   }
 
   @override
@@ -77,14 +94,27 @@ class _SearchPageState extends State<SearchPage> {
                         itemCount: search?.body.users.length ?? 0,
                         itemBuilder: (context, index) => Padding(
                             padding: const EdgeInsets.only(left: 14),
-                            child: SearchingResult(
-                              title1:
-                             
-                                  '${search?.body.users[index].user.username}',
-                              title2:
-                                  '${search?.body.users[index].user.fullName}',
-                              image:
-                                  '${search?.body.users[index].user.profilePicUrl}', verified: '${search?.body.users[index].user.isVerified}',
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => UserPage(
+                                          id: '${search?.body.users[index].user.pkId}',
+                                          profile:
+                                              '${user?.body?.edges[index].node}',
+                                          searchprofile:
+                                              '${search?.body.users[index]}',
+                                        )));
+                              },
+                              child: SearchingResult(
+                                title1:
+                                    '${search?.body.users[index].user.username}',
+                                title2:
+                                    '${search?.body.users[index].user.fullName}',
+                                image:
+                                    '${search?.body.users[index].user.profilePicUrl}',
+                                verified:
+                                    '${search?.body.users[index].user.isVerified}',
+                              ),
                             ))),
                   )
                 : Expanded(

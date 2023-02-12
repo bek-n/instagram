@@ -5,16 +5,40 @@ import 'package:instagram/view/domen/components/cached_network_image.dart';
 import '../../domen/components/follow_button.dart';
 import '../../domen/components/followers_info.dart';
 import '../../domen/components/user_bio.dart';
+import '../../domen/model/Single_User_model.dart';
+import '../../domen/repository/repo.dart';
 import '../../style/style.dart';
 
 class UserPage extends StatefulWidget {
-  const UserPage({super.key});
+  final String id, profile, searchprofile;
+  const UserPage(
+      {super.key,
+      required this.id,
+      required this.profile,
+      required this.searchprofile});
 
   @override
   State<UserPage> createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
+  bool isLoading = true;
+  Singleuser? user;
+  @override
+  void initState() {
+    getInfo();
+    super.initState();
+  }
+
+  getInfo() async {
+    isLoading;
+    setState(() {});
+    user = await GetInfo.getUsersInfo(id: widget.id);
+    isLoading = false;
+    setState(() {});
+    print('User: $user');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,12 +63,14 @@ class _UserPageState extends State<UserPage> {
           )
         ],
       ),
-      body: SingleChildScrollView(
+      body:  isLoading? CircularProgressIndicator():
+      
+      SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const FollowersInfo(
-              followers: '5,678',
+              followers: widget.searchprofile[0].,
               following: '9,286',
               image:
                   'https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',

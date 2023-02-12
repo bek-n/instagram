@@ -20,7 +20,7 @@ class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
     const HomePage(),
     const SearchPage(),
-    const UserPage(),
+    const Placeholder(),
     const Placeholder(),
     const Placeholder(),
   ];
