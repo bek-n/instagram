@@ -15,24 +15,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-       designSize: const Size(428, 926),
+        designSize: const Size(428, 926),
         minTextAdapt: true,
         splitScreenMode: true,
-      builder: (context,child) {
-        return MultiProvider(
-          providers: [
-                  ChangeNotifierProvider(create: (_) => HomeController()),
-                ],
-          child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              useMaterial3: true,
+        builder: (context, child) {
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => HomeController()),
+            ],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                useMaterial3: true,
+              ),
+              home: const GeneralPage(),
             ),
-            home: const GeneralPage(),
-          ),
-        );
-      }
-    );
+          );
+        });
   }
 }
-
