@@ -44,8 +44,6 @@ class _UserPageState extends State<UserPage> {
     print('User: $user');
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +89,7 @@ class _UserPageState extends State<UserPage> {
                       child: UserBio(
                         category: 'Category/Genre text',
                         description:
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                            '${user?.body?.edges[0].node?.edgeMediaToCaption?.edges[0].node?.text}',
                         link: 'Link goes here',
                         username:
                             '${user?.body?.edges[0].node?.owner?.username}',
