@@ -80,7 +80,7 @@ class _UserPageState extends State<UserPage> {
                     followers: '10,343',
                     following: '9,286',
                     image:
-                        'https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwzOXx8fGVufDB8fHx8&auto=format&fit=crop&w=2000&q=60',
+                        '${user?.body?.edges[2].node?.displayResources[2].src}',
                     posts: '1,234',
                   ),
                   6.verticalSpace,
@@ -107,7 +107,7 @@ class _UserPageState extends State<UserPage> {
                   ),
                   15.verticalSpace,
                   SizedBox(
-                    height: 10000,
+                    height: 550,
                     child: GridView.builder(
                         itemCount: user?.body?.edges.length,
                         physics: NeverScrollableScrollPhysics(),
