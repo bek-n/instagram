@@ -10,7 +10,7 @@ abstract class GetInfo {
   static getSingleUserHome() async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '4405bc4b49msh1355f5144d559aap197ae0jsn1ec9740f93ec',
+        'X-RapidAPI-Key': '2ee4e2c7a9mshb25f06eef8addfap1320c2jsn74621aeadcc5',
         'X-RapidAPI-Host': 'instagram47.p.rapidapi.com'
       },
       baseUrl: "https://instagram47.p.rapidapi.com",
@@ -33,7 +33,7 @@ abstract class GetInfo {
   static search(String text) async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '4405bc4b49msh1355f5144d559aap197ae0jsn1ec9740f93ec',
+        'X-RapidAPI-Key': '2ee4e2c7a9mshb25f06eef8addfap1320c2jsn74621aeadcc5',
 
         //8d73d12368msh94d59547af4d732p151035jsn05efea604202
 
@@ -59,7 +59,7 @@ abstract class GetInfo {
   static getUsersInfo({required String id}) async {
     Dio _dio = Dio(BaseOptions(
       headers: {
-        'X-RapidAPI-Key': '4405bc4b49msh1355f5144d559aap197ae0jsn1ec9740f93ec',
+        'X-RapidAPI-Key': '2ee4e2c7a9mshb25f06eef8addfap1320c2jsn74621aeadcc5',
         'X-RapidAPI-Host': 'instagram47.p.rapidapi.com'
       },
       baseUrl: "https://instagram47.p.rapidapi.com",
