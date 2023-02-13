@@ -74,11 +74,16 @@ class _HomePostsState extends State<HomePosts> {
           ],
         ),
         7.verticalSpace,
-        CustomImageNetwork(
-          image: widget.image,
-          height: 390,
-          width: MediaQuery.of(context).size.width,
-          radius: 0,
+        GestureDetector(
+          onDoubleTap: () {
+            context.read<HomeController>().onChange();
+          },
+          child: CustomImageNetwork(
+            image: widget.image,
+            height: 390,
+            width: MediaQuery.of(context).size.width,
+            radius: 0,
+          ),
         ),
         Row(
           children: [

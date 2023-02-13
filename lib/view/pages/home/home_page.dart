@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   10.verticalSpace,
                   SizedBox(
-                      height: 550,
+                      height: 10000,
                       child: ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
