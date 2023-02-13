@@ -81,7 +81,7 @@ class _SearchPageState extends State<SearchPage> {
             25.verticalSpace,
             change.isNotEmpty
                 ? isLoading
-                    ? CircularProgressIndicator()
+                    ? Center(child: CircularProgressIndicator())
                     : Expanded(
                         child: ListView.builder(
                             scrollDirection: Axis.vertical,
